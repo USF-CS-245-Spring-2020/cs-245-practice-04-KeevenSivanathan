@@ -2,12 +2,15 @@ public class MergeSort implements SortingAlgorithm
 {
 	void merge(int a[], int left, int mid, int right)
 	{
+		//Finds the size of the two subarrays to be merged. 
 		int subArray1 = mid - left + 1; 
 		int subArray2 = right - mid; 
 
+		//Creates two temporary arrays
 		int L[] = new int [subArray1];
 		int R[] = new int [subArray2];
 
+		//Copies data to temporary arrays
 		for(int i = 0; i < subArray1; ++i)
 		{
 			L[i] = a[left + i];
@@ -18,6 +21,7 @@ public class MergeSort implements SortingAlgorithm
 			R[j] = a[mid + 1 + j];
 		}
 
+		//Initial indexes of 1st and 2nd subarray
 		int i = 0;
 		int j = 0; 
 
@@ -39,6 +43,7 @@ public class MergeSort implements SortingAlgorithm
 			k++; 
 		}
 
+		//Copies remaining elements on the left 
 		while (i < subArray1)
 		{
 			a[k] = L[i]; 
@@ -46,6 +51,7 @@ public class MergeSort implements SortingAlgorithm
 			k++; 
 		}
 
+		//Copies remaining elements on the right
 		while (j < subArray2)
 		{
 			a[k] = R[j];
@@ -58,12 +64,12 @@ public class MergeSort implements SortingAlgorithm
 	{
 		if (left < right)
 		{
-			int mid = (left+right)/2;
+			int mid = (left+right)/2; //Finds the midpoint of the array
 
-			mergeSort(a,left,mid);
-			mergeSort(a,mid+1,right);
+			mergeSort(a,left,mid); //Sort first half 
+			mergeSort(a,mid+1,right); //Sort second half
 
-			merge(a,left,mid,right); 
+			merge(a,left,mid,right); //Merge sorted halves
 		}
 	}
 

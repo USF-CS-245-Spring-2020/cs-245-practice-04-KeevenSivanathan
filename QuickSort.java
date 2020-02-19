@@ -1,30 +1,38 @@
 public class QuickSort implements SortingAlgorithm
 {
+	/*Partition - takes last element as pivot and then places it in the correct position.
+	   Elements smaller than the pivot, will be placed to the left of the pivot. While elements
+	   greater than the pivot will be placed on the right of the pivot. 
+	*/
+
 	int partition(int[] a, int min, int max)
 	{
 		int pivot = a[max]; 
+		int i = (low-1); 
 
-		for(int i = min; i < max; i++)
+		for(int j = min; j < max; j++)
 		{
 			if(a[i] < pivot)
 			{
-				int temp = a[min];
-				a[min] = a[i];
-				a[i] = temp; 
-				min++;
+				i++; 
+
+				int temp = a[i];
+				a[i] = a[j];
+				a[j] = temp; 
+				
 			}
 		}
 
-		int temp = a[min];
-		a[min] = pivot;
-		a[max] = temp;
+		int temp = a[i+1];
+		a[i+1] = a[j];
+		a[j] = temp;
 
-		return min; 
+		return i+1; 
 	}
 
 	void quickSort(int a[], int min, int max)
 	{
-		int partition = partition(a,min,max);
+		int partition = partition(a,min,max); //Places the pivot in the correct position. 
 
 		if(partition-1 > min)
 		{
