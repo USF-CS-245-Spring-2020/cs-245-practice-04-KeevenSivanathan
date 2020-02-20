@@ -13,7 +13,7 @@ public class QuickSort implements SortingAlgorithm
 		for(int j = min; j < max; j++)
 		{	
 			//Element in array is less than pivot
-			if(a[i] < pivot)
+			if(a[j] < pivot)
 			{
 				i++; 
 
