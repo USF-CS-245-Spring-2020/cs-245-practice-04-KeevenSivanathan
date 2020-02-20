@@ -8,14 +8,16 @@ public class QuickSort implements SortingAlgorithm
 	int partition(int[] a, int min, int max)
 	{
 		int pivot = a[max]; 
-		int i = (low-1); 
+		int i = (min-1); 
 
 		for(int j = min; j < max; j++)
-		{
+		{	
+			//Element in array is less than pivot
 			if(a[i] < pivot)
 			{
 				i++; 
 
+				//Swap elements
 				int temp = a[i];
 				a[i] = a[j];
 				a[j] = temp; 
@@ -23,9 +25,11 @@ public class QuickSort implements SortingAlgorithm
 			}
 		}
 
+		//Element in array is greater than pivot
+		//Swap elements
 		int temp = a[i+1];
-		a[i+1] = a[j];
-		a[j] = temp;
+		a[i+1] = a[max];
+		a[max] = temp;
 
 		return i+1; 
 	}
@@ -36,17 +40,20 @@ public class QuickSort implements SortingAlgorithm
 
 		if(partition-1 > min)
 		{
+			//Recursively calls quicksort on the left side of the partitioned array
 			quickSort(a,min,partition-1);
 		}
 
 		if(partition+1 < max)
 		{
+			//Recursively calls quicksort on the right side of the partitioned array
 			quickSort(a, partition+1,max);
 		}
 	}
 
 	public void sort(int a[])
 	{
+		//Calls quicksort function for an array from beginning to end. 
 		quickSort(a,0,a.length-1);
 	}
 }
